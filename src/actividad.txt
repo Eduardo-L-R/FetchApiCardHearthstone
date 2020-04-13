@@ -1,0 +1,61 @@
+Repaso React Eventos
+
+El objetivo de este proyecto es que puedas implementar los métodos para modificar el
+texto del input y un método para hacer una nueva búsqueda de la película, además
+tendrás que aplicar reglas de estilo CSS para poder distribuir de mejor forma los
+
+elementos.
+
+1. Deberás pasar dos argumentos para el método fetch que se encuentra en el
+método componentDidMount, los argumentos serían la URL a la cuál se quiere
+acceder y options que es un objeto que tiene parámetros cómo: método http (get,
+post, delete, ...) y headers. Estas dos propiedades están declaradas en el constructor
+de la clase Películas.
+Más información sobre fetch:
+
+https://www.todojs.com/api-fetch-el-nuevo-estandar-que-permite-hacer-llamadas-
+http/
+
+2. Pasar el estado búsqueda cómo atributo al componente <BuscaPelicula />. Esto
+será necesario para poder colocar esa propiedad al atributo value del input para
+buscar la película.
+
+3. Implementar los métodos onChangeHandler y searchMovie dentro de la clase
+Peliculas y pasarlos cómo atributos del componente <BuscaPelicula /> después
+de ello deberás utilizar el atributo onChange para el input en donde se deberá de
+colocar cómo valor la referencia hacía el método onChangeHandler de la clase
+Peliculas y onClick para el button donde el valor será la referencia del método
+searchMovie de la clase películas.
+
+Nota: Recuerda que el atributo onChange hace una llamada hacía un método o función
+cada vez que se modifique el valor del input.
+El atributo onClick hace una llamada hacía un método o función cada vez que el usuario
+haga click al componente que tenga dicha propiedad.
+https://es.reactjs.org/docs/handling-events.html
+4. Implementar la lógica dentro de cada uno de los métodos:
+- La lógica para el método onChangeHandler deberá incluir el método
+this.setState para actualizar el estado respecto al valor ingresado dentro del
+input para ello te recomiendo acceder a la propiedad event.target.value para
+obtener el valor ingresado del input.
+- La lógica para el método searchMovie deberá incluir una llamada al método
+fetch para obtener las películas con respecto al valor del input y deberás
+actualizar el estado películas con el nuevo arreglo de películas que se obtiene
+de la llamada a la API.
+5. Colocar reglas de estilo para que cada ItemPelicula abarque 1/3 del tamaño del
+contenedor padre además deberás colocar reglas de estilos para que la imagen sea
+proporcional al tamaño de su contenedor.
+
+Te recomiendo hacer un fork del proyecto para que puedas tener una copia del mismo en
+codepen o puedes crear una nueva aplicación de react en tu entorno de trabajo.
+
+Cualquier duda me puedes escribir por slack
+
+
+
+https://www.todojs.com/api-fetch-el-nuevo-estandar-que-permite-hacer-llamadas-http/
+
+https://repl.it/repls/CuddlyStormyInformationtechnology
+
+https://httpbin.org/#/Request_inspection
+
+https://github.com/Eduardo-L-R/React-RPG-ToDo
