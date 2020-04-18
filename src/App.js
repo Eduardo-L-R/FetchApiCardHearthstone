@@ -7,8 +7,6 @@ class App extends React.Component{
     this.state ={
       info:{}
     }
-    this.imprimirValoresJson = this.imprimirValoresJson.bind(this);
-    this.recorrerCategoria = this.recorrerCategoria.bind(this);
   }
   componentDidMount(){
 
@@ -39,34 +37,44 @@ class App extends React.Component{
     });
   }
 
-
-  imprimirValoresJson(){
+  imprimirValoresJsonSegundaVersion=()=>{
+    //Arreglos para RECIBIR INFORMACION FETCH
     let ValoresJson = this.state.info;
-    let array = [];
     let contador = 0;
-    let arrayContenido = Object.values(this.state.info);
+    
+    var etiquetasInformacionCategorias = [];
+    var formaFinaletiquetasInformacionCategorias = [];
+    
+    var formaFinalEstructura = [];
+
+    //Arreglos para OBTENER CATEGORIAS
+    let arregloPrincipalCategorias = [];
     for (var key in ValoresJson){
-          array.push(key);
+      arregloPrincipalCategorias.push(key);
     }
-    console.log("este es array: ",array);
-    console.log("este es arrayContenido: ",arrayContenido);
-    array.map(categoria =>{
-      console.log("Categoria : ",categoria)
-      let CategoriasArray = [];
-      CategoriasArray.push(categoria);
-      this.recorrerCategoria(arrayContenido,contador);
-      contador = contador +1;
+    //Arreglos para OBTENER INFORMACION CATEGORIAS
+    let arregloPrincipalInformacionCategorias = Object.values(this.state.info);
+
+    arregloPrincipalCategorias.forEach(ForEachCategoria =>{
+
+              if(contador !== 0){
+                  arregloPrincipalInformacionCategorias[contador].forEach((ForEachInformacionCategorias) =>{ 
+                    etiquetasInformacionCategorias.push(<p style={{width:"100px", margin:"4px"}}>{ForEachInformacionCategorias}</p>);
+                  });}//Caso especial para atrap ip como STRING completo
+              else if(contador === 0){etiquetasInformacionCategorias.push(<p style={{width:"100px", margin:"4px"}}>{arregloPrincipalInformacionCategorias[0]}</p>)}
+            etiquetasInformacionCategorias = [];
+            contador = contador +1;
+          formaFinaletiquetasInformacionCategorias = [<h3 style={{display:"flex", justifyContent:"center"}}>{ForEachCategoria}</h3>,<div style={{display:"flex", flexDirection:"row", flexWrap:"wrap", width:"100%"}}>{etiquetasInformacionCategorias}</div>];
+      formaFinalEstructura.push(formaFinaletiquetasInformacionCategorias); 
     });
 
-  }
-  recorrerCategoria(arrayContenido,contador){
-    if(contador !== 0){Object.values(arrayContenido[contador]).map(categoriaobjeto => console.log(categoriaobjeto))}
-    else{console.log(arrayContenido[contador])}
+    return formaFinalEstructura;
+
   }
   render(){
     return(
       <div>
-        {this.imprimirValoresJson()} 
+        {this.imprimirValoresJsonSegundaVersion()}
       </div>
     )
   };

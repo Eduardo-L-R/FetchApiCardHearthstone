@@ -59,3 +59,58 @@ https://repl.it/repls/CuddlyStormyInformationtechnology
 https://httpbin.org/#/Request_inspection
 
 https://github.com/Eduardo-L-R/React-RPG-ToDo
+
+
+pokeapi
+developer.marvel.com api de marvel
+spotify api
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+
+
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      charactersInfo: []
+    }
+  }
+  
+  componentDidMount(){
+    fetch('https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=a52ed7bfc15a56ab146fe1d85650d9cc&hash=5c2e58bb6d69a204dea09aee599e071e&events=314')
+    .then(response => {      
+      return response.json();
+    })
+    .then(response => {      
+      console.log(response);
+      this.setState({charactersInfo: response.data.results});      
+      
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+  
+  render(){
+    return(
+      <div>
+        
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
